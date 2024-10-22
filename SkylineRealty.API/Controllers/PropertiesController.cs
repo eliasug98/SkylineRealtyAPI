@@ -9,7 +9,7 @@ using SkylineRealty.API.DTOs.PropertyDTOs;
 namespace SkylineRealty.API.Controllers
 {
     [ApiController]
-    [Route("api/products")]
+    [Route("api/properties")]
     public class PropertiesController : ControllerBase
     {
         private readonly IPropertiesRepository _repository;

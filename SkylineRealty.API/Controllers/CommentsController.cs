@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace SkylineRealty.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/comments")]
     [ApiController]
     public class CommentsController : ControllerBase
     {
