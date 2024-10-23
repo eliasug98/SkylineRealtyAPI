@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SkylineRealty.API.DBContext;
 
@@ -10,9 +11,10 @@ using SkylineRealty.API.DBContext;
 namespace SkylineRealty.API.Migrations
 {
     [DbContext(typeof(SkylineRealtyContext))]
-    partial class SkylineRealtyContextModelSnapshot : ModelSnapshot
+    [Migration("20241023185304_UpdateTables")]
+    partial class UpdateTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.35");
@@ -66,7 +68,7 @@ namespace SkylineRealty.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Address")
+                    b.Property<string>("Adress")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -144,7 +146,7 @@ namespace SkylineRealty.API.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 10, 23, 15, 59, 2, 431, DateTimeKind.Local).AddTicks(9760),
+                            CreatedDate = new DateTime(2024, 10, 23, 15, 53, 4, 79, DateTimeKind.Local).AddTicks(7223),
                             Email = "usuario1@gmail.com",
                             Password = "has3vgHdhDfbsSajsd",
                             Phone = 0,
@@ -154,7 +156,7 @@ namespace SkylineRealty.API.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 10, 23, 15, 59, 2, 431, DateTimeKind.Local).AddTicks(9775),
+                            CreatedDate = new DateTime(2024, 10, 23, 15, 53, 4, 79, DateTimeKind.Local).AddTicks(7243),
                             Email = "eliasug98@hotmail.com",
                             Password = "asd123",
                             Phone = 0,
@@ -164,7 +166,7 @@ namespace SkylineRealty.API.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 10, 23, 15, 59, 2, 431, DateTimeKind.Local).AddTicks(9776),
+                            CreatedDate = new DateTime(2024, 10, 23, 15, 53, 4, 79, DateTimeKind.Local).AddTicks(7245),
                             Email = "usuariodeprueba@gmail.com",
                             Password = "123456",
                             Phone = 0,

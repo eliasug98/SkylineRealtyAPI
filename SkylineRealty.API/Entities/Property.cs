@@ -15,7 +15,7 @@ namespace SkylineRealty.API.Entities
         public string Title { get; set; }
 
         [Required]
-        public string Adress { get; set; }
+        public string Address { get; set; }
 
         [Required]
         public decimal Price { get; set; }

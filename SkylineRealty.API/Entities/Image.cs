@@ -13,6 +13,7 @@ namespace SkylineRealty.API.Entities
         [Required]
         public string Url { get; set; }
 
+        [Required]
         public int PropertyId { get; set; }
 
         [JsonIgnore]

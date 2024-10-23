@@ -10,6 +10,7 @@ namespace SkylineRealty.API.DBContext
         public DbSet<User> Users { get; set; }
         public DbSet<Property> Properties { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Image> Images { get; set; }
 
         public SkylineRealtyContext(DbContextOptions<SkylineRealtyContext> options) : base(options)
         {
@@ -46,34 +47,34 @@ namespace SkylineRealty.API.DBContext
 
             ////-----------------------------------------------------
 
-            var users = new User[3]
-            {
-                new User()
-                {
-                    Id = 1,
-                    UserName = "Elias",
-                    Password = "has3vgHdhDfbsSajsd",
-                    Email = "usuario1@gmail.com",
-                    Role = "Admin"
-                },
-                new User()
-                {
-                    Id = 2,
-                    UserName = "eliasug98",
-                    Password = "asd123",
-                    Email = "eliasug98@hotmail.com",
-                    Role = "Client",
-                },
-                new User()
-                {
-                    Id = 3,
-                    UserName = "usuariodeprueba",
-                    Password = "123456",
-                    Email = "usuariodeprueba@gmail.com",
-                    Role = "Client"
-                }
-            };
-            modelBuilder.Entity<User>().HasData(users);
+            //var users = new User[3]
+            //{
+            //    new User()
+            //    {
+            //        Id = 1,
+            //        UserName = "Elias",
+            //        Password = "has3vgHdhDfbsSajsd",
+            //        Email = "usuario1@gmail.com",
+            //        Role = "Admin"
+            //    },
+            //    new User()
+            //    {
+            //        Id = 2,
+            //        UserName = "eliasug98",
+            //        Password = "asd123",
+            //        Email = "eliasug98@hotmail.com",
+            //        Role = "Client",
+            //    },
+            //    new User()
+            //    {
+            //        Id = 3,
+            //        UserName = "usuariodeprueba",
+            //        Password = "123456",
+            //        Email = "usuariodeprueba@gmail.com",
+            //        Role = "Client"
+            //    }
+            //};
+            //modelBuilder.Entity<User>().HasData(users);
 
             base.OnModelCreating(modelBuilder);
         }

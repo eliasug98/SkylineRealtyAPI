@@ -1,4 +1,5 @@
-﻿using SkylineRealty.API.DBContext;
+﻿using Microsoft.EntityFrameworkCore;
+using SkylineRealty.API.DBContext;
 using SkylineRealty.API.Entities;
 using SkylineRealty.API.Services.Interfaces;
 
@@ -7,18 +8,27 @@ namespace SkylineRealty.API.Services.Implementations
     public class PropertiesRepository : IPropertiesRepository
     {
         private readonly SkylineRealtyContext _context;
+
         public PropertiesRepository(SkylineRealtyContext context)
         {
             _context = context;
         }
+
         public IEnumerable<Property> GetProperties()
         {
-            return _context.Properties;
+            // Incluir Images y Comments en la consulta
+            return _context.Properties
+                .Include(p => p.Images)
+                .Include(p => p.Comments);
         }
 
         public Property? GetPropertyById(int idProperty)
         {
-            return _context.Properties.Where(p => p.Id == idProperty).FirstOrDefault();
+            // Incluir Images y Comments en la consulta por ID
+            return _context.Properties
+                .Include(p => p.Images)
+                .Include(p => p.Comments)
+                .FirstOrDefault(p => p.Id == idProperty);
         }
 
         public void AddProperty(Property property)
@@ -31,14 +41,15 @@ namespace SkylineRealty.API.Services.Implementations
             var property = _context.Properties.FirstOrDefault(p => p.Id == propertyToDelete.Id);
             if (property != null)
             {
+                _context.Images.RemoveRange(property.Images);
+                _context.Comments.RemoveRange(property.Comments);
                 _context.Properties.Remove(propertyToDelete);
             }
-
         }
 
         public bool PropertyExists(string title)
         {
-            return _context.Properties.Where(o => o.Title == title).Any();
+            return _context.Properties.Any(o => o.Title == title);
         }
 
         public void Update(Property property)
@@ -53,7 +64,11 @@ namespace SkylineRealty.API.Services.Implementations
 
         public IEnumerable<Property> GetPropertiesBySellerId(int sellerId)
         {
-            return _context.Properties.Where(p => p.SellerId == sellerId);
+            // Incluir Images y Comments en la consulta por SellerId
+            return _context.Properties
+                .Include(p => p.Images)
+                .Include(p => p.Comments)
+                .Where(p => p.SellerId == sellerId);
         }
     }
 }
