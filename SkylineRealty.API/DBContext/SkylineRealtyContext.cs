@@ -51,28 +51,13 @@ namespace SkylineRealty.API.DBContext
             //{
             //    new User()
             //    {
-            //        Id = 1,
-            //        UserName = "Elias",
-            //        Password = "has3vgHdhDfbsSajsd",
-            //        Email = "usuario1@gmail.com",
-            //        Role = "Admin"
+            //        "id": 1,
+            //        "username": "usuario5",
+            //        "email": "user5@example.com",
+            //        "password": "asdfgh",
+            //        "phone": 666
+            //        "role": "Client"
             //    },
-            //    new User()
-            //    {
-            //        Id = 2,
-            //        UserName = "eliasug98",
-            //        Password = "asd123",
-            //        Email = "eliasug98@hotmail.com",
-            //        Role = "Client",
-            //    },
-            //    new User()
-            //    {
-            //        Id = 3,
-            //        UserName = "usuariodeprueba",
-            //        Password = "123456",
-            //        Email = "usuariodeprueba@gmail.com",
-            //        Role = "Client"
-            //    }
             //};
             //modelBuilder.Entity<User>().HasData(users);
 

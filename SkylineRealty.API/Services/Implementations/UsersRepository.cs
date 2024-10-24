@@ -75,19 +75,13 @@ namespace SkylineRealty.API.Services.Implementations
             // Crear un nuevo salt
             using (var rng = new RNGCryptoServiceProvider())
             {
-                byte[] salt = new byte[16];
+                byte[] salt = new byte[16]; // 16 bytes es suficiente
                 rng.GetBytes(salt);
 
-                // Hashear la contraseña con el salt
-                using (var sha512 = SHA512.Create())
+                // Hashing utilizando PBKDF2
+                using (var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 100000)) // 100,000 iteraciones
                 {
-                    byte[] passwordBytes = Encoding.UTF8.GetBytes(password);
-                    byte[] saltedPassword = new byte[salt.Length + passwordBytes.Length];
-
-                    Buffer.BlockCopy(salt, 0, saltedPassword, 0, salt.Length);
-                    Buffer.BlockCopy(passwordBytes, 0, saltedPassword, salt.Length, passwordBytes.Length);
-
-                    byte[] hash = sha512.ComputeHash(saltedPassword);
+                    byte[] hash = pbkdf2.GetBytes(32); // Generar un hash de 32 bytes (256 bits)
 
                     // Combinar el salt y el hash para almacenarlo
                     byte[] hashWithSalt = new byte[salt.Length + hash.Length];
@@ -109,15 +103,9 @@ namespace SkylineRealty.API.Services.Implementations
             Buffer.BlockCopy(hashWithSalt, 0, salt, 0, salt.Length);
 
             // Hashear la contraseña ingresada con el mismo salt
-            using (var sha512 = SHA512.Create())
+            using (var pbkdf2 = new Rfc2898DeriveBytes(enteredPassword, salt, 100000))
             {
-                byte[] enteredPasswordBytes = Encoding.UTF8.GetBytes(enteredPassword);
-                byte[] saltedEnteredPassword = new byte[salt.Length + enteredPasswordBytes.Length];
-
-                Buffer.BlockCopy(salt, 0, saltedEnteredPassword, 0, salt.Length);
-                Buffer.BlockCopy(enteredPasswordBytes, 0, saltedEnteredPassword, salt.Length, enteredPasswordBytes.Length);
-
-                byte[] enteredHash = sha512.ComputeHash(saltedEnteredPassword);
+                byte[] enteredHash = pbkdf2.GetBytes(32); // Generar un hash de 32 bytes (256 bits)
 
                 // Comparar los hashes
                 for (int i = 0; i < enteredHash.Length; i++)
