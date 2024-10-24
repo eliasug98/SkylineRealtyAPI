@@ -51,11 +51,20 @@ namespace SkylineRealty.API.DBContext
             //{
             //    new User()
             //    {
-            //        "id": 1,
+            //        "id": 5,
             //        "username": "usuario5",
             //        "email": "user5@example.com",
             //        "password": "asdfgh",
             //        "phone": 666
+            //        "role": "Admin"
+            //    },
+            //    new User()
+            //    {
+            //        "id": 6,
+            //        "username": "usuario6",
+            //        "email": "user6@example.com",
+            //        "password": "qwerty",
+            //        "phone": 123
             //        "role": "Client"
             //    },
             //};
