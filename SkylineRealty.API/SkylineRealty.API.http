@@ -1,0 +1,6 @@
+@SkylineRealty.API_HostAddress = http://localhost:5063
+
+GET {{SkylineRealty.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

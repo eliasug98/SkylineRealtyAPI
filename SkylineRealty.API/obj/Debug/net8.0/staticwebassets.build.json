@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "ckLL1cCnfAu9oQZDqPoEyTdTohVHnrVigNTPj8r5G8s=",
+  "Source": "SkylineRealty.API",
+  "BasePath": "_content/SkylineRealty.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
